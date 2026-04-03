@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Trip Organizer - TripSaathi</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Trip<span>Saathi</span></a>
+    <button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="trips.html">Trips</a>
+      <a href="planner.html">Planner</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="group.html" class="active">Group Trip</a>
+      <a href="homestays.html">Homestays</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="experience-hero">
+  <div class="container">
+    <h1>Group Trip Organizer</h1>
+    <p style="color:var(--text-secondary);margin-top:8px;font-size:1.1rem;">Plan, organize & split costs for your college squad trip</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px;">
+  <div class="container">
+    <div class="section-header">
+      <h2>How It Works</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h4>Fill the Form</h4>
+        <p>Tell us your group size, budget, dates and preferred destination.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h4>Get a Plan</h4>
+        <p>We create a custom itinerary with transport, stay & food — all within budget.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h4>Split & Book</h4>
+        <p>See per-person costs, share with friends, and confirm your trip.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h4>Travel Together</h4>
+        <p>Pack your bags, meet your group, and make memories on a budget!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: rgba(56, 189, 248, 0.03);">
+  <div class="container">
+    <div class="planner-box">
+      <h2 style="text-align:center;margin-bottom:24px;">Plan Your Group Trip</h2>
+
+      <form name="group-trip" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="group-form">
+        <input type="hidden" name="form-name" value="group-trip">
+        <p class="hidden"><label>Don't fill this: <input name="bot-field"></label></p>
+
+        <div class="form-group">
+          <label>Trip Organizer Name</label>
+          <input type="text" name="organizer" class="form-control" placeholder="Your name" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp Number</label>
+            <input type="tel" name="phone" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Group Size</label>
+            <select name="group-size" class="form-control" required>
+              <option value="">Select size</option>
+              <option value="2-3">2-3 Friends</option>
+              <option value="4-6">4-6 Friends</option>
+              <option value="7-10">7-10 Friends</option>
+              <option value="10+">10+ (College group)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Budget Per Person</label>
+            <select name="budget" class="form-control" required>
+              <option value="">Select budget</option>
+              <option value="under-1000">Under ₹1000</option>
+              <option value="1000-2000">₹1000 - ₹2000</option>
+              <option value="2000-3000">₹2000 - ₹3000</option>
+              <option value="3000-5000">₹3000 - ₹5000</option>
+              <option value="5000+">₹5000+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Preferred Destination</label>
+            <select name="destination" class="form-control" id="destination-select">
+              <option value="">Any / Suggest for us</option>
+              <option value="manali">Manali</option>
+              <option value="rishikesh">Rishikesh</option>
+              <option value="goa">Goa</option>
+              <option value="jaipur">Jaipur</option>
+              <option value="kasol">Kasol</option>
+              <option value="udaipur">Udaipur</option>
+              <option value="mcleodganj">Mcleodganj</option>
+              <option value="varanasi">Varanasi</option>
+              <option value="pondicherry">Pondicherry</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Dates</label>
+            <input type="text" name="dates" class="form-control" placeholder="e.g., Last week of May">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Trip Type</label>
+          <select name="trip-type" class="form-control">
+            <option value="adventure">Adventure (trekking, rafting)</option>
+            <option value="chill">Chill (beach, cafe hopping)</option>
+            <option value="culture">Culture (forts, temples, food)</option>
+            <option value="mixed">Mix of everything</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Anything else we should know?</label>
+          <textarea name="notes" class="form-control" placeholder="Special requirements, college name, travel preferences..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Submit Group Trip Request</button>
+      </form>
+
+      <div id="form-success" class="hidden result-box mt-4" style="text-align:center;">
+        <h3 style="color:var(--success);">Request Submitted!</h3>
+        <p>We'll get back to you within 24 hours with a custom group trip plan. Check your WhatsApp!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Popular Group Destinations</h2>
+      <p>Most booked group trips by college students</p>
+    </div>
+    <div class="card-grid" id="group-trips"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>TripSaathi</h4>
+      <p>Budget travel platform for students. Travel smart, spend less, explore more.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="trips.html">Budget Trips</a>
+      <a href="experiences.html">Local Experiences</a>
+      <a href="homestays.html">Homestays</a>
+      <a href="group.html">Group Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Plan</h4>
+      <a href="planner.html">Trip Planner</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="mailto:kbrijendra168@gmail.com">kbrijendra168@gmail.com</a>
+      <a href="https://wa.me/917571870305">WhatsApp: +91 7571870305</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 TripSaathi | Made for Students</p>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  // Render group-friendly trips
+  var grid = document.getElementById('group-trips');
+  tripData.filter(function(t) { return t.days >= 2; }).slice(0, 6).forEach(function(trip) {
+    grid.innerHTML += renderTripCard(trip);
+  });
+
+  // Pre-select destination from URL param
+  var params = new URLSearchParams(window.location.search);
+  var tripId = params.get('trip');
+  if (tripId) {
+    var trip = tripData.find(function(t) { return t.id === parseInt(tripId); });
+    if (trip) {
+      var sel = document.getElementById('destination-select');
+      var cityLower = trip.city.toLowerCase();
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === cityLower) {
+          sel.selectedIndex = i;
+          break;
+        }
+      }
+    }
+  }
+
+  // Form submission
+  var form = document.getElementById('group-form');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    }).then(function() {
+      form.classList.add('hidden');
+      document.getElementById('form-success').classList.remove('hidden');
+    }).catch(function() {
+      alert('Something went wrong. Please try WhatsApp instead!');
+    });
+  });
+</script>
+
+</body>
+</html>

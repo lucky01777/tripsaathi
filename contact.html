@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - TripSaathi</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Trip<span>Saathi</span></a>
+    <button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="trips.html">Trips</a>
+      <a href="planner.html">Planner</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="group.html">Group Trip</a>
+      <a href="homestays.html">Homestays</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="experience-hero">
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p style="color:var(--text-secondary);margin-top:8px;font-size:1.1rem;">Got questions? Want to collaborate? Reach out!</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1000px;margin:0 auto;" class="contact-layout">
+
+      <div class="planner-box">
+        <h3 style="margin-bottom:20px;">Send a Message</h3>
+
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden"><label>Don't fill this: <input name="bot-field"></label></p>
+
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Your name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label>Subject</label>
+            <select name="subject" class="form-control" required>
+              <option value="">Select a topic</option>
+              <option value="trip-query">Trip Query</option>
+              <option value="group-trip">Group Trip Planning</option>
+              <option value="become-guide">Become a Local Guide</option>
+              <option value="list-homestay">List My Homestay</option>
+              <option value="collaboration">Collaboration / Partnership</option>
+              <option value="feedback">Feedback</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" class="form-control" placeholder="Tell us what's on your mind..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+        </form>
+
+        <div id="contact-success" class="hidden result-box mt-4" style="text-align:center;">
+          <h3 style="color:var(--success);">Message Sent!</h3>
+          <p>We'll get back to you soon. You can also reach us on WhatsApp for faster replies.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="planner-box" style="margin-bottom:24px;">
+          <h3 style="margin-bottom:16px;">Quick Connect</h3>
+          <div class="itinerary-item">
+            <div class="itinerary-icon">💬</div>
+            <div class="itinerary-details">
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/917571870305">+91 7571870305</a></p>
+              <p style="color:var(--text-muted);font-size:0.8rem;">Fastest way to reach us</p>
+            </div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itinerary-icon">📧</div>
+            <div class="itinerary-details">
+              <h4>Email</h4>
+              <p><a href="mailto:kbrijendra168@gmail.com">kbrijendra168@gmail.com</a></p>
+              <p style="color:var(--text-muted);font-size:0.8rem;">For detailed queries & partnerships</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="planner-box">
+          <h3 style="margin-bottom:16px;">Join TripSaathi</h3>
+          <div class="feature-item" style="border:none;padding:16px 0;text-align:left;">
+            <h4 style="margin-bottom:4px;">Become a Local Guide</h4>
+            <p style="color:var(--text-secondary);font-size:0.88rem;">Know hidden spots in your city? Earn by showing travelers the real local experience.</p>
+          </div>
+          <div class="feature-item" style="border:none;padding:16px 0;text-align:left;">
+            <h4 style="margin-bottom:4px;">List Your Homestay</h4>
+            <p style="color:var(--text-secondary);font-size:0.88rem;">Have a spare room or cottage? Host student travelers and earn extra income.</p>
+          </div>
+          <div class="feature-item" style="border:none;padding:16px 0;text-align:left;">
+            <h4 style="margin-bottom:4px;">Campus Ambassador</h4>
+            <p style="color:var(--text-secondary);font-size:0.88rem;">Represent TripSaathi at your college. Organize trips & earn commissions.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>TripSaathi</h4>
+      <p>Budget travel platform for students. Travel smart, spend less, explore more.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="trips.html">Budget Trips</a>
+      <a href="experiences.html">Local Experiences</a>
+      <a href="homestays.html">Homestays</a>
+      <a href="group.html">Group Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Plan</h4>
+      <a href="planner.html">Trip Planner</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="mailto:kbrijendra168@gmail.com">kbrijendra168@gmail.com</a>
+      <a href="https://wa.me/917571870305">WhatsApp: +91 7571870305</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 TripSaathi | Made for Students</p>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  var form = document.getElementById('contact-form');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    }).then(function() {
+      form.classList.add('hidden');
+      document.getElementById('contact-success').classList.remove('hidden');
+    }).catch(function() {
+      alert('Something went wrong. Please try WhatsApp instead!');
+    });
+  });
+</script>
+
+<style>
+  @media (max-width: 768px) {
+    .contact-layout { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+</body>
+</html>

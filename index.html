@@ -3,77 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tripsaathi - Travel Smart, Spend Less</title>
-  <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#0f172a; color:white; }
-    header { padding:20px; display:flex; justify-content:space-between; align-items:center; }
-    header h1 { color:#38bdf8; }
-    nav a { color:white; margin:0 10px; text-decoration:none; }
-    .hero { text-align:center; padding:80px 20px; }
-    .hero h2 { font-size:40px; }
-    .btn { background:#38bdf8; padding:12px 20px; border:none; color:black; border-radius:8px; cursor:pointer; }
-    .section { padding:40px 20px; }
-    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-    .card { background:#1e293b; padding:20px; border-radius:12px; }
-    footer { text-align:center; padding:20px; background:#020617; }
-  </style>
+  <title>TripSaathi - Travel Smart, Spend Less</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header>
-  <h1>Tripsaathi</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#trips">Trips</a>
-    <a href="#planner">Planner</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Trip<span>Saathi</span></a>
+    <button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="trips.html">Trips</a>
+      <a href="planner.html">Planner</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="group.html">Group Trip</a>
+      <a href="homestays.html">Homestays</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <section class="hero">
-   <h2>Travel Smart. Spend Less.</h2>
-  <p>Budget trips, group travel & hidden experiences for students</p>
-  <button class="btn">Explore Trips</button>
-</section>
-
-<section class="section" id="trips">
-  <h2>🔥 Popular Trips</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Manali Budget Trip</h3>
-      <p>3 Days | ₹2999</p>
-      <button class="btn">Book Now</button>
-    </div>
-    <div class="card">
-      <h3>Rishikesh Adventure</h3>
-      <p>2 Days | ₹1999</p>
-      <button class="btn">Book Now</button>
-    </div>
-    <div class="card">
-      <h3>Delhi Street Food Tour</h3>
-      <p>1 Day | ₹499</p>
-      <button class="btn">Book Now</button>
+  <div class="container">
+    <h1>Travel Smart.<br><span class="highlight">Spend Less.</span></h1>
+    <p>Budget trips, group travel, hidden experiences & local homestays — built for students, by students.</p>
+    <div class="hero-actions">
+      <a href="trips.html" class="btn btn-primary btn-lg">Explore Trips</a>
+      <a href="planner.html" class="btn btn-outline btn-lg">Plan My Trip</a>
     </div>
   </div>
 </section>
 
-<section class="section" id="planner">
-  <h2>💸 Budget Trip Planner</h2>
-  <p>Enter your budget and get a custom trip plan</p>
-  <input type="number" placeholder="Enter budget ₹" style="padding:10px;border-radius:6px;border:none;">
-    <button class="btn">Generate Plan</button>
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why TripSaathi?</h2>
+      <p>Everything a student traveler needs — in one place</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon">💸</div>
+        <h3>Budget Trips</h3>
+        <p>Curated trips from ₹499 to ₹5000. Trains, buses, hostels & street food — all planned out.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🗺️</div>
+        <h3>Hidden Experiences</h3>
+        <p>Street food walks, secret temples, night tours — things only locals know about.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">👥</div>
+        <h3>Group Trips</h3>
+        <p>Organize trips with friends. Split costs, plan together, travel cheaper.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🏡</div>
+        <h3>Local Homestays</h3>
+        <p>Stay with local families. Authentic food, real culture, and prices that won't hurt.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="contact">
-  <h2>📞 Contact Us</h2>
-  <p>WhatsApp: +91 7571870305</p>
-  <p>Email:- kbrijendra168@gmail.com</p>
+<section class="section" style="background: rgba(56, 189, 248, 0.03);">
+  <div class="container">
+    <div class="section-header">
+      <h2>Popular Trips</h2>
+      <p>Trending budget trips loved by students</p>
+    </div>
+    <div class="card-grid" id="popular-trips"></div>
+    <div class="text-center mt-4">
+      <a href="trips.html" class="btn btn-outline">View All Trips →</a>
+    </div>
+  </div>
 </section>
 
-<footer>
-  <p>© 2026 Tripsaathi | Made for Students ❤️</p>
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Local Experiences</h2>
+      <p>Food tours, hidden gems & things tourists miss</p>
+    </div>
+    <div class="card-grid" id="featured-experiences"></div>
+    <div class="text-center mt-4">
+      <a href="experiences.html" class="btn btn-outline">Explore All Experiences →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: rgba(56, 189, 248, 0.03);">
+  <div class="container">
+    <div class="group-banner">
+      <h3>Planning a Group Trip?</h3>
+      <p>Organize trips with your college squad. Split costs, vote on destinations & travel together.</p>
+      <a href="group.html" class="btn btn-primary mt-2">Start Group Trip →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>TripSaathi</h4>
+      <p>Budget travel platform for students. Travel smart, spend less, explore more.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="trips.html">Budget Trips</a>
+      <a href="experiences.html">Local Experiences</a>
+      <a href="homestays.html">Homestays</a>
+      <a href="group.html">Group Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Plan</h4>
+      <a href="planner.html">Trip Planner</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="mailto:kbrijendra168@gmail.com">kbrijendra168@gmail.com</a>
+      <a href="https://wa.me/917571870305">WhatsApp: +91 7571870305</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 TripSaathi | Made for Students</p>
+  </div>
 </footer>
+
+<script src="js/app.js"></script>
+<script>
+  // Render popular trips (first 6)
+  var popularGrid = document.getElementById('popular-trips');
+  tripData.slice(0, 6).forEach(function(trip) {
+    popularGrid.innerHTML += renderTripCard(trip);
+  });
+
+  // Render featured experiences (first 3)
+  var expGrid = document.getElementById('featured-experiences');
+  experienceData.slice(0, 3).forEach(function(exp) {
+    expGrid.innerHTML += renderExperienceCard(exp);
+  });
+</script>
 
 </body>
 </html>
- 
