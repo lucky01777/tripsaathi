@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tripsaathi - Travel Smart, Spend Less</title>
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; background:#0f172a; color:white; }
+    header { padding:20px; display:flex; justify-content:space-between; align-items:center; }
+    header h1 { color:#38bdf8; }
+    nav a { color:white; margin:0 10px; text-decoration:none; }
+    .hero { text-align:center; padding:80px 20px; }
+    .hero h2 { font-size:40px; }
+    .btn { background:#38bdf8; padding:12px 20px; border:none; color:black; border-radius:8px; cursor:pointer; }
+    .section { padding:40px 20px; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .card { background:#1e293b; padding:20px; border-radius:12px; }
+    footer { text-align:center; padding:20px; background:#020617; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Tripsaathi</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#trips">Trips</a>
+    <a href="#planner">Planner</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+   <h2>Travel Smart. Spend Less.</h2>
+  <p>Budget trips, group travel & hidden experiences for students</p>
+  <button class="btn">Explore Trips</button>
+</section>
+
+<section class="section" id="trips">
+  <h2>🔥 Popular Trips</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Manali Budget Trip</h3>
+      <p>3 Days | ₹2999</p>
+      <button class="btn">Book Now</button>
+    </div>
+    <div class="card">
+      <h3>Rishikesh Adventure</h3>
+      <p>2 Days | ₹1999</p>
+      <button class="btn">Book Now</button>
+    </div>
+    <div class="card">
+      <h3>Delhi Street Food Tour</h3>
+      <p>1 Day | ₹499</p>
+      <button class="btn">Book Now</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="planner">
+  <h2>💸 Budget Trip Planner</h2>
+  <p>Enter your budget and get a custom trip plan</p>
+  <input type="number" placeholder="Enter budget ₹" style="padding:10px;border-radius:6px;border:none;">
+    <button class="btn">Generate Plan</button>
+</section>
+
+<section class="section" id="contact">
+  <h2>📞 Contact Us</h2>
+  <p>WhatsApp: +91 7571870305</p>
+  <p>Email:- kbrijendra168@gmail.com</p>
+</section>
+
+<footer>
+  <p>© 2026 Tripsaathi | Made for Students ❤️</p>
+</footer>
+
+</body>
+</html>
+ 
