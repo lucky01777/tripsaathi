@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Homestays - TripSaathi</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Trip<span>Saathi</span></a>
+    <button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="trips.html">Trips</a>
+      <a href="planner.html">Planner</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="group.html">Group Trip</a>
+      <a href="homestays.html" class="active">Homestays</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="experience-hero">
+  <div class="container">
+    <h1>Local Homestays</h1>
+    <p style="color:var(--text-secondary);margin-top:8px;font-size:1.1rem;">Affordable stays with local families — real food, real culture, real prices</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px;">
+  <div class="container">
+    <div class="category-tabs" id="stay-filters">
+      <button class="category-tab active" data-filter="all">All Stays</button>
+      <button class="category-tab" data-filter="cottage">Cottage</button>
+      <button class="category-tab" data-filter="hostel">Hostel</button>
+      <button class="category-tab" data-filter="camp">Camp</button>
+      <button class="category-tab" data-filter="heritage">Heritage</button>
+      <button class="category-tab" data-filter="farm">Farm Stay</button>
+    </div>
+
+    <div class="card-grid" id="all-homestays"></div>
+  </div>
+</section>
+
+<section class="section" style="background: rgba(56, 189, 248, 0.03);">
+  <div class="container">
+    <div class="section-header">
+      <h2>List Your Homestay</h2>
+      <p>Have a spare room, cottage, or farm? List it on TripSaathi and host student travelers.</p>
+    </div>
+    <div class="text-center">
+      <a href="contact.html" class="btn btn-primary btn-lg">List Your Property →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>TripSaathi</h4>
+      <p>Budget travel platform for students. Travel smart, spend less, explore more.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="trips.html">Budget Trips</a>
+      <a href="experiences.html">Local Experiences</a>
+      <a href="homestays.html">Homestays</a>
+      <a href="group.html">Group Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Plan</h4>
+      <a href="planner.html">Trip Planner</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="mailto:kbrijendra168@gmail.com">kbrijendra168@gmail.com</a>
+      <a href="https://wa.me/917571870305">WhatsApp: +91 7571870305</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 TripSaathi | Made for Students</p>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  var grid = document.getElementById('all-homestays');
+  homestayData.forEach(function(stay) {
+    grid.innerHTML += renderHomestayCard(stay);
+  });
+
+  var tabs = document.querySelectorAll('#stay-filters .category-tab');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      filterCards(grid, tab.getAttribute('data-filter'));
+    });
+  });
+</script>
+
+</body>
+</html>

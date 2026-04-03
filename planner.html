@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Trip Planner - TripSaathi</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Trip<span>Saathi</span></a>
+    <button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="trips.html">Trips</a>
+      <a href="planner.html" class="active">Planner</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="group.html">Group Trip</a>
+      <a href="homestays.html">Homestays</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="experience-hero">
+  <div class="container">
+    <h1>Budget Trip Planner</h1>
+    <p style="color:var(--text-secondary);margin-top:8px;font-size:1.1rem;">Enter your budget and get instant trip plans with transport, stay & food breakdown</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px;">
+  <div class="container">
+    <div class="planner-box">
+      <div class="form-group">
+        <label>Your Budget</label>
+        <div class="budget-range">
+          <span style="color:var(--text-muted)">₹500</span>
+          <input type="range" id="budget-slider" min="500" max="5000" step="100" value="3000">
+          <span style="color:var(--text-muted)">₹5000</span>
+        </div>
+        <div class="budget-display" id="budget-display">₹3000</div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Number of Travelers</label>
+          <select class="form-control" id="travelers">
+            <option value="1">1 (Solo)</option>
+            <option value="2">2 Friends</option>
+            <option value="3">3 Friends</option>
+            <option value="4" selected>4 Friends</option>
+            <option value="5">5+ Group</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Traveling From</label>
+          <select class="form-control" id="from-city">
+            <option value="delhi">Delhi</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="bangalore">Bangalore</option>
+            <option value="kolkata">Kolkata</option>
+            <option value="chennai">Chennai</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Trip Type Preference</label>
+        <select class="form-control" id="trip-type">
+          <option value="all">Any Type</option>
+          <option value="adventure">Adventure</option>
+          <option value="food">Food & Culture</option>
+          <option value="chill">Chill / Beach</option>
+          <option value="culture">Heritage & Culture</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center;" id="generate-btn">Generate Trip Plans</button>
+
+      <div id="planner-results" class="hidden"></div>
+    </div>
+
+    <div id="trip-detail" class="hidden" style="margin-top:40px;"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>TripSaathi</h4>
+      <p>Budget travel platform for students. Travel smart, spend less, explore more.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="trips.html">Budget Trips</a>
+      <a href="experiences.html">Local Experiences</a>
+      <a href="homestays.html">Homestays</a>
+      <a href="group.html">Group Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Plan</h4>
+      <a href="planner.html">Trip Planner</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="mailto:kbrijendra168@gmail.com">kbrijendra168@gmail.com</a>
+      <a href="https://wa.me/917571870305">WhatsApp: +91 7571870305</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 TripSaathi | Made for Students</p>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  var slider = document.getElementById('budget-slider');
+  var display = document.getElementById('budget-display');
+  var generateBtn = document.getElementById('generate-btn');
+  var resultsDiv = document.getElementById('planner-results');
+  var detailDiv = document.getElementById('trip-detail');
+
+  slider.addEventListener('input', function() {
+    display.textContent = '₹' + slider.value;
+  });
+
+  // Check if coming from a trip card
+  var params = new URLSearchParams(window.location.search);
+  var tripId = params.get('trip');
+  if (tripId) {
+    var trip = tripData.find(function(t) { return t.id === parseInt(tripId); });
+    if (trip) {
+      showTripDetail(trip);
+    }
+  }
+
+  generateBtn.addEventListener('click', function() {
+    var budget = parseInt(slider.value);
+    var travelers = parseInt(document.getElementById('travelers').value);
+    var tripType = document.getElementById('trip-type').value;
+
+    var plans = tripData.filter(function(trip) {
+      if (trip.price > budget) return false;
+      if (tripType !== 'all' && trip.category !== tripType) return false;
+      return true;
+    });
+
+    plans.sort(function(a, b) { return (b.days / b.price) - (a.days / a.price); });
+
+    if (plans.length === 0) {
+      resultsDiv.innerHTML = '<div class="result-box"><h3>No trips found</h3><p>Try increasing your budget or changing the trip type.</p></div>';
+      resultsDiv.classList.remove('hidden');
+      return;
+    }
+
+    var html = '<div class="result-box"><h3>Recommended Trips for ₹' + budget + '</h3>';
+    plans.forEach(function(trip) {
+      var breakdown = formatBudgetBreakdown(trip, travelers);
+      html += '<div class="itinerary-item" style="cursor:pointer;" onclick="showTripDetail(tripData.find(function(t){return t.id===' + trip.id + '}))">' +
+        '<div class="itinerary-icon">' + trip.emoji + '</div>' +
+        '<div class="itinerary-details" style="flex:1;">' +
+          '<h4>' + trip.name + ' <span class="tag" style="margin-left:8px;">' + trip.days + 'D</span></h4>' +
+          '<p>' + trip.city + ' | ' + trip.transport + '</p>' +
+          '<p class="cost">₹' + breakdown.perPerson + '/person (total ₹' + breakdown.total + ' for ' + travelers + ')</p>' +
+        '</div>' +
+      '</div>';
+    });
+    html += '</div>';
+
+    resultsDiv.innerHTML = html;
+    resultsDiv.classList.remove('hidden');
+  });
+
+  function showTripDetail(trip) {
+    var travelers = parseInt(document.getElementById('travelers').value);
+    var breakdown = formatBudgetBreakdown(trip, travelers);
+
+    var html = '<div class="planner-box">' +
+      '<div style="text-align:center;font-size:3rem;margin-bottom:12px;">' + trip.emoji + '</div>' +
+      '<h2 style="text-align:center;margin-bottom:8px;">' + trip.name + '</h2>' +
+      '<p style="text-align:center;color:var(--text-secondary);margin-bottom:24px;">' + trip.city + ' | ' + trip.days + ' Days</p>' +
+      '<p style="margin-bottom:24px;">' + trip.desc + '</p>' +
+
+      '<div class="result-box">' +
+        '<h3>Budget Breakdown (for ' + travelers + ' traveler' + (travelers > 1 ? 's' : '') + ')</h3>' +
+        '<div class="itinerary-item">' +
+          '<div class="itinerary-icon">🚌</div>' +
+          '<div class="itinerary-details"><h4>Transport</h4><p>' + trip.transport + '</p><p class="cost">₹' + breakdown.transport + '</p></div>' +
+        '</div>' +
+        '<div class="itinerary-item">' +
+          '<div class="itinerary-icon">🏨</div>' +
+          '<div class="itinerary-details"><h4>Stay</h4><p>' + trip.stay + '</p><p class="cost">₹' + breakdown.stay + '</p></div>' +
+        '</div>' +
+        '<div class="itinerary-item">' +
+          '<div class="itinerary-icon">🍽️</div>' +
+          '<div class="itinerary-details"><h4>Food</h4><p>' + trip.food + '</p><p class="cost">₹' + breakdown.food + '</p></div>' +
+        '</div>' +
+        '<div class="itinerary-item" style="border-top:2px solid var(--accent);">' +
+          '<div class="itinerary-icon">💰</div>' +
+          '<div class="itinerary-details"><h4>Total</h4><p class="cost" style="font-size:1.1rem;">₹' + breakdown.total + ' total | ₹' + breakdown.perPerson + '/person</p></div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="result-box">' +
+        '<h3>Day-by-Day Itinerary</h3>';
+
+    trip.itinerary.forEach(function(day, i) {
+      html += '<div class="itinerary-item">' +
+        '<div class="itinerary-icon">📍</div>' +
+        '<div class="itinerary-details"><h4>Day ' + (i + 1) + '</h4><p>' + day + '</p></div>' +
+      '</div>';
+    });
+
+    html += '</div>' +
+      '<div style="text-align:center;margin-top:24px;">' +
+        '<a href="group.html?trip=' + trip.id + '" class="btn btn-primary">Plan Group Trip →</a>' +
+      '</div>' +
+    '</div>';
+
+    detailDiv.innerHTML = html;
+    detailDiv.classList.remove('hidden');
+    detailDiv.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
